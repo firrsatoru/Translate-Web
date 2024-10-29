@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  background-color: #1b1b1b;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.kamus-container {
+  background-color: #282828;
+  border: 3px solid #3e3e3e;
+  border-radius: 15px;
+  width: 320px;
+  padding: 25px;
+  box-shadow: 0px 0px 15px 3px #000;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.kamus-container h3 {
+  font-size: 26px;
+  color: #00d1ff;
+  margin-bottom: 25px;
+}
+
+.kamus-container label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.kamus-container input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #3e3e3e;
+  border-radius: 10px;
+  background-color: #1b1b1b;
+  color: #f0f0f0;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.kamus-container input[type="text"]:focus {
+  border-color: #00d1ff;
+  outline: none;
+}
+
+.kamus-container button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #00d1ff;
+  color: #282828;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.kamus-container button:hover {
+  background-color: #00aaff;
+}
+
+.result-container {
+  margin-top: 20px;
+  background-color: #3e3e3e;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  color: #f0f0f0;
+}
+
+.result-container h4 {
+  font-size: 20px;
+  color: #00d1ff;
+}
+
+.result-container p {
+  font-size: 16px;
+  color: #f0f0f0;
+  margin-top: 5px;
+}
