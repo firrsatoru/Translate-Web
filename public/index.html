@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamus Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="kamus-container">
+    <h3>Kamus Online</h3>
+    <label for="source-lang">Bahasa Awal:</label>
+    <input type="text" id="source-lang" placeholder="Contoh: id">
+
+    <label for="target-lang">Bahasa Tujuan:</label>
+    <input type="text" id="target-lang" placeholder="Contoh: en">
+
+    <label for="text-input">Teks:</label>
+    <input type="text" id="text-input" placeholder="Masukkan teks untuk diterjemahkan">
+
+    <button onclick="translateText()">Terjemahkan</button>
+
+    <div class="result-container" id="result">
+      <h4>Hasil Terjemahan:</h4>
+      <p id="translation">Terjemahan akan muncul di sini</p>
+    </div>
+  </div>
+
+  <script>
+    async function translateText() {
+      const sourceLang = document.getElementById('source-lang').value.trim();
+      const targetLang = document.getElementById('target-lang').value.trim();
+      const textInput = document.getElementById('text-input').value.trim();
+      const translation = document.getElementById('translation');
+
+      if (!sourceLang || !targetLang || !textInput) {
+        translation.textContent = "Lengkapi semua kolom untuk melakukan terjemahan";
+        return;
+      }
+
+      try {
+        const response = await fetch("/translate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            sourceLang,
+            targetLang,
+            text: textInput
+          }),
+        });
+
+        const data = await response.json();
+        translation.textContent = data.translation;
+      } catch (error) {
+        translation.textContent = "Err Internal Server!";
+      }
+    }
+  </script>
+</body>
+
+</html>
